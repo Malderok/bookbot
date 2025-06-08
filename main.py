@@ -2,17 +2,21 @@ from stats import count_characters
 from stats import display_count
 from stats import count_book_word
 from stats import get_book_text
+import sys
 
 def main():
 
-    f = "/home/curbal/github.com/Malderok/bookbot/books/frankenstein.txt"
+    if len(sys.argv) != 2:
 
-    conteo = count_characters(f)
-    total_words = count_book_word(f)
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    conteo = count_characters(sys.argv[1])
+    total_words = count_book_word(sys.argv[1])
 
 
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {sys.argv[1]}")
     print("----------- Word Count ----------")
     print(f"Found {total_words} total words")
     print("--------- Character Count -------")
